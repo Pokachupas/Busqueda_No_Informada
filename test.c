@@ -12,7 +12,7 @@ int main() {
     int inicio = 0;
     int fin = 3;
 
-    if (busquedaUCS(gp, inicio, fin)) {
+    if (busquedaAchuraCostoUniforme(gp, inicio, fin)) {
         printf("Se encontro un camino desde %d a %d.\n", inicio, fin);
     }
     liberarGrafoPonderado(gp);
