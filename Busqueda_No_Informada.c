@@ -75,7 +75,7 @@ char *busquedaAnchura(Grafo *grafo, int inicio, int fin)
 ///////////////////////////////////////////////////////////////////
 // Busqueda de anchura de costo uniforme
 
-int busquedaUCS(GrafoPonderado *grafo, int inicio, int fin) {
+int busquedaAnchuraCostoUniforme(GrafoPonderado *grafo, int inicio, int fin) {
     // Crear un arreglo para marcar los nodos visitados
     int *visited = (int *)calloc(grafo->numVertices, sizeof(int));
     if (visited == NULL) {
