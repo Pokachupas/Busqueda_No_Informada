@@ -104,6 +104,80 @@ void liberarCola(Cola *cola) {
     }
 }
 
+
+/////////////Pila///////////////
+typedef struct{
+    Nodo *firstElement;
+}Pila;
+
+Pila* crearPila(){
+    Pila *p = (Pila *)malloc(sizeof(Pila));
+    if(p == NULL){
+        printf("Error en asignacion de memoria.\n");
+        exit(EXIT_FAILURE);
+    }else{
+        p->firstElement = NULL;
+    }
+}
+
+void insertarElementoPila(Pila* pila, int elemento){
+    Nodo *nodo = crearNodo(elemento);
+    if(nodo == NULL){
+        printf("Error en asignacion de memoria.\n");
+        exit(EXIT_FAILURE);
+    }else{
+        if(pila->firstElement == NULL){
+            pila->firstElement = nodo;
+        }else{
+            pila->firstElement->next = pila->firstElement;
+            pila->firstElement = nodo;
+        }
+    }
+}
+
+int sacarElemento(Pila *pila){
+    if(pilaVacia(pila)){
+        printf("Error la pila esta vacia.\n");
+        exit(EXIT_FAILURE);
+    }else{
+        Nodo *nodoEliminado = pila->firstElement;
+        int value = nodoEliminado->dato;
+        pila->firstElement = nodoEliminado->next;
+        free(nodoEliminado);
+        return value;
+    }
+}
+int pilaVacia(Pila *pila){
+    if(pila->firstElement == NULL){
+        return 1;
+    }else{
+        return 0;
+    }
+ }
+
+ int verSalida(Pila *pila){
+    if(pilaVacia(pila)){
+        printf("Error, pila vacia.\n");
+        exit(EXIT_FAILURE);
+    }
+    int value = pila->firstElement->dato;
+    return value;
+ }
+ 
+ void liberarPila(Pila *pila){
+    if (pila != NULL) {
+        Nodo *actual = pila->firstElement;
+        while (actual != NULL) {
+            Nodo *temp = actual;
+            actual = actual->next;
+            free(temp);
+        }
+        free(pila);
+    }
+ }
+
+
+
 ///////////Grafos//////////////
 typedef struct{
     int numVertices;
@@ -140,6 +214,21 @@ void mostrarGrafo(Grafo* grafo){
             temp = temp->next;
         }
         printf("\n");
+    }
+}
+void liberarGrafo(Grafo *grafo){
+    if (grafo != NULL) {
+        for (int i = 0; i < grafo->numVertices; i++) {
+            Nodo *temp = grafo->listaAdyacencia[i];
+            while (temp) {
+                Nodo *nodoAEliminar = temp;
+                temp = temp->next;
+                free(nodoAEliminar);
+            }
+        }
+
+        free(grafo->listaAdyacencia);
+        free(grafo);
     }
 }
 
@@ -266,3 +355,4 @@ void reiniciarArray(din_Array *array) {
     limpiarArray(array); // Liberar la memoria actual.
     init_Array(array); // Inicializar el arreglo nuevamente.
 }
+

@@ -7,6 +7,8 @@ struct Cola;
 struct Grafo;
 struct GrafoPonderado;
 struct din_Array;
+struct Pila;
+struct matrizDinamica;
 
 //Metodos de arreglos dinamicos
 din_Array* crearArregloDinamico();
@@ -17,12 +19,24 @@ void show_Array(din_Array array);
 void limpiarArray(din_Array *array);
 void reiniciarArray(din_Array *array);
 
+//Metodos de matriz dinamica
+
+
 //Metodos de Nodo
 Nodo* crearNodo(int data);
 
 //Metodos de Nodo Ponderado
  NodoPonderado *crearNodoPonderado(int destino, int peso);
  void liberarNodoPonderado(NodoPonderado *nodo);
+
+
+//Metodos de Pila
+Pila *crearPila();
+void insertarElementoPila(Pila *pila, int elemento);
+int sacarElemento(Pila *pila);
+int verSalida(Pila *pila);
+int pilaVacia(Pila *pila);
+void liberarPila(Pila *pila);
 
 //Metodos de Cola
 Cola* crearCola();
@@ -35,6 +49,7 @@ int vacia(Cola *cola);
 Grafo* crearGrafo(int numNodos);
 void agregarArista(Grafo *grafo, int origen, int destino);
 void mostrarGrafo(Grafo *grafo);
+void liberarGrafo(Grafo *grafo);
 
 //Metodos de Grafos Ponderados
 GrafoPonderado* crearGrafoPonderado(int numNodos);
