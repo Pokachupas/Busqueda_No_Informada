@@ -250,8 +250,8 @@ void busquedaProfundidad(Grafo *grafo, int inicio){
         }     //Los cuales serían del segundo hasta el n nodo de cada nivel 
         countLevels++;
     }////////////////////////////
-    for(int j =  0; )
-    caminos[countLevels - 1]
+    //for(int j =  0; )
+    //caminos[countLevels - 1]
     //Aqui debes tratar de imprimir el primer camino obtenido, te falta guardarlo
     for(int j = 0; j < grafo->numVertices; j++){
         free(niveles[j]);

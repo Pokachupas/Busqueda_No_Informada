@@ -22,7 +22,7 @@ int main() {
 
     
     int inicio = 0;
-    int fin = 3;
+    //int fin = 3;
     mostrarGrafo(grafo);
     // if (busquedaAnchuraCostoUniforme(gp, inicio, fin)) {
     //     printf("Se encontro un camino desde %d a %d.\n", inicio, fin);
